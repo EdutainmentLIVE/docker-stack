@@ -1,4 +1,4 @@
-# docker-stack
+# ITProTV Docker Haskell Stack
 
 Base Docker image for building Haskell projects.
 
