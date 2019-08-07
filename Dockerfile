@@ -1,6 +1,6 @@
 FROM debian:stretch-20190610-slim
 
-ARG STACK_VERSION=2.1.1
+ARG STACK_VERSION=2.1.3
 ENV \
   PATH=/root/.local/bin:$PATH \
   STACK_ROOT=/stack-root
