@@ -32,3 +32,5 @@ RUN \
   rm stack.tgz && \
   mv stack /usr/local/bin/ && \
   stack --version
+
+RUN stack upgrade --git
