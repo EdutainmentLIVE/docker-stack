@@ -1,4 +1,4 @@
-FROM debian:stretch-20190708-slim
+FROM debian:stretch-20191118-slim
 
 ARG STACK_VERSION=2.1.3
 ENV \
