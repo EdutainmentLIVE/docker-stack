@@ -19,6 +19,7 @@ RUN \
     wget \
     xz-utils \
     zlib1g-dev && \
+  apt-get auto-clean && \
   cd /tmp && \
   wget \
     --output-document stack.tgz \
@@ -31,6 +32,6 @@ RUN \
     --wildcards '*/stack' && \
   rm stack.tgz && \
   mv stack /usr/local/bin/ && \
+  stack upgrade --git && \
+  rm -r /stack-root && \
   stack --version
-
-RUN stack upgrade --git
