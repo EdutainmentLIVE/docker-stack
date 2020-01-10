@@ -18,6 +18,7 @@ RUN \
     netbase \
     wget \
     xz-utils \
+    tar \
     zlib1g-dev && \
   cd /tmp && \
   wget \
