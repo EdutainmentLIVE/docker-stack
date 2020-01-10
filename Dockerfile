@@ -11,15 +11,17 @@ RUN \
   yum install -y \
     gcc \
     git \
-    libgmp-dev \
-    libpq-dev \
-    libtinfo-dev \
+    gmp-devel \
+    gzip \
     make \
-    netbase \
-    wget \
-    xz-utils \
+    ncurses-devel \
+    perl \
+    postgresql-devel \
     tar \
-    zlib1g-dev && \
+    xz \
+    zip \
+    wget \
+    zlib-devel && \
   cd /tmp && \
   wget \
     --output-document stack.tgz \
