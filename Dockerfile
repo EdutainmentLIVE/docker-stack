@@ -1,4 +1,4 @@
-FROM debian:stretch-20191118-slim
+FROM amazonlinux:2
 
 ARG STACK_VERSION=2.1.3
 ENV \
@@ -7,8 +7,8 @@ ENV \
 
 RUN \
   set -o xtrace && \
-  apt-get update && \
-  apt-get install --assume-yes \
+  yum update -y && \
+  yum install -y \
     gcc \
     git \
     libgmp-dev \
@@ -19,7 +19,6 @@ RUN \
     wget \
     xz-utils \
     zlib1g-dev && \
-  apt-get auto-clean && \
   cd /tmp && \
   wget \
     --output-document stack.tgz \
