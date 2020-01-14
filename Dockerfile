@@ -14,13 +14,17 @@ RUN \
     gmp-devel \
     gzip \
     make \
+    nc \
     ncurses-devel \
+    netcat-openbsd \
     perl \
+    postgresql-client-9.6 \
     postgresql-devel \
+    procps \
     tar \
+    wget \
     xz \
     zip \
-    wget \
     zlib-devel && \
   cd /tmp && \
   wget \
