@@ -1,6 +1,6 @@
 FROM amazonlinux:2
 
-ARG STACK_VERSION=2.1.3
+ARG STACK_VERSION=2.3.0.1
 ENV \
   PATH=/root/.local/bin:$PATH \
   STACK_ROOT=/stack-root
@@ -38,6 +38,4 @@ RUN \
     --wildcards '*/stack' && \
   rm stack.tgz && \
   mv stack /usr/local/bin/ && \
-  stack upgrade --git && \
-  rm -r /stack-root && \
   stack --version
