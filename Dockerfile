@@ -1,24 +1,31 @@
-FROM debian:stretch-20190708-slim
+FROM amazonlinux:2018.03.0.20180827
 
-ARG STACK_VERSION=2.1.3
+ARG STACK_VERSION=2.3.0.1
 ENV \
   PATH=/root/.local/bin:$PATH \
   STACK_ROOT=/stack-root
 
 RUN \
   set -o xtrace && \
-  apt-get update && \
-  apt-get install --assume-yes \
+  yum update -y && \
+  yum install -y \
     gcc \
     git \
-    libgmp-dev \
-    libpq-dev \
-    libtinfo-dev \
+    gmp-devel \
+    gzip \
     make \
-    netbase \
+    nc \
+    ncurses-devel \
+    netcat-openbsd \
+    perl \
+    postgresql-client-9.6 \
+    postgresql-devel \
+    procps \
+    tar \
     wget \
-    xz-utils \
-    zlib1g-dev && \
+    xz \
+    zip \
+    zlib-devel && \
   cd /tmp && \
   wget \
     --output-document stack.tgz \
