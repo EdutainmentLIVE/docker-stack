@@ -13,6 +13,7 @@ RUN \
     git \
     gmp-devel \
     gzip \
+    libc6 \
     make \
     nc \
     ncurses-devel \
