@@ -1,4 +1,4 @@
-FROM amazonlinux:2
+FROM amazonlinux:2018.03.0.20180827
 
 ARG STACK_VERSION=2.3.0.1
 ENV \
