@@ -1,6 +1,6 @@
 FROM amazonlinux:2018.03.0.20180827
 
-ARG STACK_VERSION=2.3.0.1
+ARG STACK_VERSION=2.3.1
 ENV \
   PATH=/root/.local/bin:$PATH \
   STACK_ROOT=/stack-root
