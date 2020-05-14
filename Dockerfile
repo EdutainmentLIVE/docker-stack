@@ -24,6 +24,7 @@ RUN \
     tar \
     wget \
     xz \
+    xz-devel \
     zip \
     zlib-devel && \
   cd /tmp && \
