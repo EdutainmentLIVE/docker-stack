@@ -1,6 +1,6 @@
-FROM amazonlinux:2018.03.0.20180827
+FROM amazonlinux:2
 
-ARG STACK_VERSION=2.3.1
+ARG STACK_VERSION=2.3.3
 ENV \
   PATH=/root/.local/bin:$PATH \
   STACK_ROOT=/stack-root
@@ -18,7 +18,7 @@ RUN \
     ncurses-devel \
     netcat-openbsd \
     perl \
-    postgresql-client-9.6 \
+    postgresql-client-9.11 \
     postgresql-devel \
     procps \
     tar \
@@ -39,4 +39,6 @@ RUN \
     --wildcards '*/stack' && \
   rm stack.tgz && \
   mv stack /usr/local/bin/ && \
+  stack upgrade --git && \
+  rm -r /stack-root && \
   stack --version
