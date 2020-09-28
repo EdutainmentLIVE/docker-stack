@@ -1,0 +1,49 @@
+extra-deps:
+  - AesonBson-0.4.0
+  - happstack-server-7.6.0
+  - HDBC-postgresql-2.3.2.7
+  - HPDF-1.5.1
+  - json-0.10
+  - prolude-0.0.0.0
+  - servant-0.18
+  - servant-server-0.18
+
+  # We have our own custom orville package that we forked from flipstone:
+  # https://github.com/flipstone/orville
+  - git: https://github.com/EdutainmentLIVE/orville
+    commit: 8a2432891e96a547777b67a67135e235a1dce80c
+
+  # These packages require patches that aren't yet available on Hackage. We're
+  # required to pull them from GitHub instead. If you add a package here, be
+  # sure to include a link to an upstream pull request. Once the pull request
+  # is merged and released to Hackage, we can stop using the GitHub source.
+
+  # <https://github.com/hdbc/convertible/pull/15>
+  - git: https://github.com/codygman/convertible
+    commit: 9e4849e143458aa3175e71bc2a8a29502272eb88
+
+  # Brittany for patterns <https://github.com/lspitzner/brittany/issues/199>
+  - git: https://github.com/lspitzner/brittany
+    commit: 7d68b1cc3809e2921756c3a1bf67a83e82c21b0a
+
+  # <https://github.com/yesodweb/persistent/pull/1129>
+  - git: https://github.com/codygman/persistent
+    commit: 71de35824f3592efb6cdb6cfd3fe29bb119008c0
+    subdirs:
+      - persistent-mongoDB
+
+  # Allows passing empty symbol to get automatic capture docs
+  # <https://github.com/haskell-servant/servant-swagger/pull/125>
+  - git: https://github.com/haskell-servant/servant-swagger
+    commit: 2c0bf4759a96e848130f6a16fb45d6525bf06522
+
+  # <https://github.com/haskell-servant/servant-swagger-ui/pull/78>
+  - git: https://github.com/aschmois/servant-swagger-ui
+    commit: 8c697a4ddb4d128e2c1fb5795ee1ee1892ff250a
+    subdirs:
+      - servant-swagger-ui-core
+      - servant-swagger-ui
+
+  # <https://github.com/haskell-servant/servant-blaze/pull/19>
+  - git: https://github.com/aschmois/servant-blaze
+    commit: b0d5d16e7bce3c22ea3ebce8ed29f28fd1e4a64a
