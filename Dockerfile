@@ -36,5 +36,3 @@ RUN yum update -y \
   && rm stack.tgz \
   && mv stack /usr/local/bin/ \
   && cd .. && rm -r $ITPROTV_ROOT/tmp
-
-ENTRYPOINT [ "bash" ]
