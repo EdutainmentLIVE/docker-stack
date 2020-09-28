@@ -1,10 +1,10 @@
 FROM amazonlinux:2.0.20200722.0
 
 ARG STACK_VERSION=2.5.0.1
+ARG ITPROTV_ROOT=/home/itprotv
 
 ENV LANG=C.UTF-8 \
   LC_ALL=C.UTF-8 \
-  ITPROTV_ROOT=/home/itprotv \
   STACK_ROOT=$ITPROTV_ROOT/.stack
 
 RUN yum update -y \
