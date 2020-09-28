@@ -18,7 +18,7 @@ RUN \
     ncurses-devel \
     netcat-openbsd \
     perl \
-    postgresql-client-9.6 \
+    postgresql-client-11 \
     postgresql-devel \
     procps \
     tar \
