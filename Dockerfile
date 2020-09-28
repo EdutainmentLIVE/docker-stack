@@ -1,11 +1,9 @@
 FROM amazonlinux:2.0.20200722.0
 
 ARG STACK_VERSION=2.5.0.1
-ARG ITPROTV_ROOT=/home/itprotv
 
 ENV LANG=C.UTF-8 \
-  LC_ALL=C.UTF-8 \
-  STACK_ROOT=$ITPROTV_ROOT/.stack
+  LC_ALL=C.UTF-8
 
 RUN yum update -y \
   && yum install -y \
@@ -29,10 +27,10 @@ RUN yum update -y \
     zlib-devel \
   && yum clean all \
   && rm -rf /var/cache/yum \
-  && mkdir -p $ITPROTV_ROOT/tmp \
-  && cd $ITPROTV_ROOT/tmp \
+  && mkdir -p /tmp/stack \
+  && cd /tmp/stack \
   && wget --output-document stack.tgz --no-verbose "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64.tar.gz" \
   && tar --extract --file stack.tgz --strip-components 1 --wildcards '*/stack' \
   && rm stack.tgz \
   && mv stack /usr/local/bin/ \
-  && cd .. && rm -r $ITPROTV_ROOT/tmp
+  && cd .. && rm -r /tmp/stack
