@@ -34,3 +34,9 @@ RUN yum update -y \
   && rm stack.tgz \
   && mv stack /usr/local/bin/ \
   && cd .. && rm -r /tmp/stack
+
+RUN useradd -m docker
+RUN mkdir -p /.stack
+RUN chown -R docker:docker /.stack
+
+USER docker
