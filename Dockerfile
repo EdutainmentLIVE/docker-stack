@@ -21,7 +21,6 @@ RUN yum update -y \
     ncurses-devel \
     netcat-openbsd \
     perl \
-    postgresql-devel \
     procps \
     tar \
     wget \
