@@ -2,6 +2,11 @@ FROM amazonlinux:2.0.20200722.0
 
 ARG STACK_VERSION=2.5.1
 
+RUN yum update -y \
+  && amazon-linux-extras install postgresql11 \
+  && yum install -y \
+  sudo
+
 ENV LANG=C.UTF-8 \
   LC_ALL=C.UTF-8
 
@@ -16,6 +21,7 @@ RUN yum update -y \
     ncurses-devel \
     netcat-openbsd \
     perl \
+    postgresql-devel \
     procps \
     tar \
     wget \
