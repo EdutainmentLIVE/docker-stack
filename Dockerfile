@@ -35,4 +35,5 @@ RUN yum update -y \
 
 ARG USER=haskell
 RUN useradd --create-home "$USER"
+RUN echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER "$USER"
