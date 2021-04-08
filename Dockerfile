@@ -6,8 +6,10 @@ ENV LANG=C.UTF-8 \
   LC_ALL=C.UTF-8
 
 RUN yum update -y \
+  && amazon-linux-extras install postgresql11
+
+RUN yum update -y \
   && yum install -y \
-    amazon-linux-extras install postgresql11 \
     gcc \
     git \
     gmp-devel \
