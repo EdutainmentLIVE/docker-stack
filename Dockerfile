@@ -7,6 +7,7 @@ ENV LANG=C.UTF-8 \
 
 RUN yum update -y \
   && yum install -y \
+    amazon-linux-extras install postgresql11 \
     gcc \
     git \
     gmp-devel \
@@ -16,9 +17,8 @@ RUN yum update -y \
     ncurses-devel \
     netcat-openbsd \
     perl \
-    postgresql-client-11 \
-    postgresql-devel \
     procps \
+    sudo \
     tar \
     wget \
     xz \
@@ -34,3 +34,8 @@ RUN yum update -y \
   && rm stack.tgz \
   && mv stack /usr/local/bin/ \
   && cd .. && rm -r /tmp/stack
+
+ARG USER=haskell
+RUN useradd --create-home "$USER"
+RUN echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+USER "$USER"
