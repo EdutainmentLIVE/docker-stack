@@ -1,10 +1,8 @@
 FROM amazonlinux:2.0.20200722.0
 
 ARG STACK_VERSION=2.5.1
-ARG USER=haskell
 
 ENV LANG=C.UTF-8
-ENV PATH="/home/$USER/.local/bin:$PATH"
 
 RUN yum update -y \
   && amazon-linux-extras install postgresql11 \
@@ -33,8 +31,4 @@ RUN yum update -y \
   && tar --extract --file stack.tgz --strip-components 1 --wildcards '*/stack' \
   && mv stack /usr/local/bin/ \
   && cd - \
-  && rm -r /tmp/stack \
-  && useradd --create-home "$USER" \
-  && echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-USER "$USER"
+  && rm -r /tmp/stack
