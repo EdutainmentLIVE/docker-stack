@@ -1,13 +1,14 @@
 FROM amazonlinux:2.0.20200722.0
 
 ARG STACK_VERSION=2.5.1
+ARG USER=haskell
 
-ENV LANG=C.UTF-8 \
-  LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+ENV PATH="/home/$USER/.local/bin:$PATH"
 
 RUN yum update -y \
+  && amazon-linux-extras install postgresql11 \
   && yum install -y \
-    amazon-linux-extras install postgresql11 \
     gcc \
     git \
     gmp-devel \
@@ -15,7 +16,6 @@ RUN yum update -y \
     make \
     nc \
     ncurses-devel \
-    netcat-openbsd \
     perl \
     procps \
     sudo \
@@ -31,11 +31,10 @@ RUN yum update -y \
   && cd /tmp/stack \
   && wget --output-document stack.tgz --no-verbose "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/stack-$STACK_VERSION-linux-x86_64.tar.gz" \
   && tar --extract --file stack.tgz --strip-components 1 --wildcards '*/stack' \
-  && rm stack.tgz \
   && mv stack /usr/local/bin/ \
-  && cd .. && rm -r /tmp/stack
+  && cd - \
+  && rm -r /tmp/stack \
+  && useradd --create-home "$USER" \
+  && echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-ARG USER=haskell
-RUN useradd --create-home "$USER"
-RUN echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER "$USER"
