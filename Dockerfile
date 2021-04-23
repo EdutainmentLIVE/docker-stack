@@ -6,7 +6,7 @@ ARG STACK_VERSION=2.5.1
 ENV LANG=C.UTF-8
 
 # Make sure this path includes initdb for the usage of tmp-postgres
-ENV PATH=/usr/lib/postgresql/12/bin/$PATH
+ENV PATH=/usr/lib/postgresql/12/bin/:$PATH
 
 RUN apt-get update -y \
   && apt-get install -y \
