@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20210416
+FROM ubuntu:focal-20210827
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG STACK_VERSION=2.7.3
