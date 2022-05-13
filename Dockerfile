@@ -9,7 +9,7 @@ ARG STACK_VERSION=2.7.3
 
 ENV LANG=C.UTF-8
 
-ENV PATH=/home/haskell/.ghcup/bin:/stack/bin:$PATH
+ENV PATH=/home/$USER/.ghcup/bin:/stack/bin:$PATH
 
 # Create a default home for the default user & allow any user to sudo
 RUN useradd --create-home --uid "$UID" "$USER" \
