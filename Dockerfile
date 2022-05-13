@@ -13,7 +13,8 @@ ENV PATH=/home/$USER/.ghcup/bin:/stack/bin:$PATH
 
 # Create a default home for the default user & allow any user to sudo
 RUN useradd --create-home --uid "$UID" "$USER" \
-  && echo "$USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  && mkdir -p /etc/sudoers.d/ \
+  && echo "$USER ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$USER"
 
 # Have a default work directory. Chances are your configs will override this to provide a better
 # experience like terminal click to go to definition.
@@ -21,7 +22,6 @@ WORKDIR "/home/$USER"
 
 RUN apt-get update -y \
   && apt-get install -y \
-  --option=Dpkg::Options::="--force-confold" \
     curl \
     gcc \
     git \
