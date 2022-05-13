@@ -2,6 +2,7 @@ FROM ubuntu:focal-20210827
 
 ARG USER=haskell
 ARG UID=1000
+ARG GID=1000
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG STACK_VERSION=2.7.3
@@ -50,8 +51,8 @@ USER "$USER"
 # RUN mkdir -p /home/haskell/.stack/global-project/
 
 # Copy stack.yaml with overriden packages and extra-deps
-COPY --chown=1000:1000 config.yaml /home/haskell/.stack/config.yaml
-COPY --chown=1000:1000 stack.yaml /home/haskell/.stack/global-project/stack.yaml
+COPY --chown=$UID:$GID config.yaml /home/haskell/.stack/config.yaml
+COPY --chown=$UID:$GID stack.yaml /home/haskell/.stack/global-project/stack.yaml
 
 RUN ls -larth -R /home/haskell/.stack
 
