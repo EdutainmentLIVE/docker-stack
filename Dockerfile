@@ -41,20 +41,13 @@ RUN apt-get update -y \
     zlib1g-dev \
   && apt-get autoremove
 
-# next build docker-stack develop after below should create /stack with right perms
-
 RUN mkdir -p /stack && chown -R $USER:$USER /stack
 
 USER "$USER"
 
-# TODO building from scratch work without this because chown 1000 takes care of it in COPY?
-# RUN mkdir -p /home/haskell/.stack/global-project/
-
 # Copy stack.yaml with overriden packages and extra-deps
 COPY --chown=$UID:$GID config.yaml /home/haskell/.stack/config.yaml
 COPY --chown=$UID:$GID stack.yaml /home/haskell/.stack/global-project/stack.yaml
-
-RUN ls -larth -R /home/haskell/.stack
 
 COPY install.sh /home/haskell/install.sh
 RUN /home/haskell/install.sh
