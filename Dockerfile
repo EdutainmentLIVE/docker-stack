@@ -50,6 +50,8 @@ RUN apt-get update -y \
 # next build docker-stack develop after below should create /stack with right perms
 RUN mkdir -p /stack && chown -R $USER:$USER /stack
 
+ENV STACK_ROOT="/stack/.stack"
+
 USER "$USER"
 
 # Copy stack.yaml with overriden packages and extra-deps

@@ -3,4 +3,3 @@ local-bin-path: /stack/bin
 recommend-stack-upgrade: false
 system-ghc: true
 install-ghc: false
-stack-root: /stack/.stack
