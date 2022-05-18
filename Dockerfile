@@ -51,10 +51,10 @@ USER "$USER"
 # RUN mkdir -p /home/haskell/.stack/global-project/
 
 # Copy stack.yaml with overriden packages and extra-deps
-COPY --chown=$UID:$GID config.yaml /home/haskell/.stack/config.yaml
-COPY --chown=$UID:$GID stack.yaml /home/haskell/.stack/global-project/stack.yaml
+COPY --chown=$UID:$GID config.yaml /home/$USER/.stack/config.yaml
+COPY --chown=$UID:$GID stack.yaml /home/$USER/.stack/global-project/stack.yaml
 
 RUN ls -larth -R /home/haskell/.stack
 
-COPY install.sh /home/haskell/install.sh
-RUN /home/haskell/install.sh
+COPY install.sh /home/$USER/install.sh
+RUN /home/$USER/install.sh
