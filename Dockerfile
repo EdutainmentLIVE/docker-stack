@@ -9,7 +9,7 @@ ARG STACK_VERSION=2.7.3
 
 ENV LANG=C.UTF-8
 
-ENV PATH=/home/$USER/.ghcup/bin:/stack/bin:$PATH
+ENV PATH=/home/$USER/.ghcup/bin:/stack/bin:/usr/lib/postgresql/13/bin:$PATH
 
 # Create a default home for the default user & allow any user to sudo
 RUN groupadd -g "$GID" $USER \
@@ -20,6 +20,10 @@ RUN groupadd -g "$GID" $USER \
 # Have a default work directory. Chances are your configs will override this to provide a better
 # experience like terminal click to go to definition.
 WORKDIR "/home/$USER"
+
+RUN apt-get update -y && apt-get install -y gnupg curl ca-certificates
+RUN curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt focal-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 
 RUN apt-get update -y \
   && apt-get install -y \
@@ -34,6 +38,7 @@ RUN apt-get update -y \
     make \
     netcat-openbsd \
     perl \
+    postgresql-13 \
     sudo \
     tar \
     wget \
