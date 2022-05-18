@@ -56,11 +56,11 @@ RUN mkdir -p /stack && chown -R $USER:$USER /stack
 
 ENV STACK_ROOT="/stack/.stack"
 
-USER "$USER"
-
 # Copy stack.yaml with overriden packages and extra-deps
-COPY --chown=$UID:$GID config.yaml /home/$USER/.stack/config.yaml
-COPY --chown=$UID:$GID stack.yaml /home/$USER/.stack/global-project/stack.yaml
+COPY --chown=$UID:$GID config.yaml /stack/.stack/config.yaml
+COPY --chown=$UID:$GID stack.yaml /stack/.stack/global-project/stack.yaml
+
+USER "$USER"
 
 COPY install.sh /home/$USER/install.sh
 RUN /home/$USER/install.sh
