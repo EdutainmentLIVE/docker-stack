@@ -12,7 +12,8 @@ ENV LANG=C.UTF-8
 ENV PATH=/home/$USER/.ghcup/bin:/stack/bin:$PATH
 
 # Create a default home for the default user & allow any user to sudo
-RUN useradd --create-home --uid "$UID" "$USER" \
+RUN groupadd -g "$GID" $USER \
+  && useradd --create-home --uid "$UID" --gid "$GID" "$USER" \
   && mkdir -p /etc/sudoers.d/ \
   && echo "$USER ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$USER"
 
@@ -42,19 +43,13 @@ RUN apt-get update -y \
   && apt-get autoremove
 
 # next build docker-stack develop after below should create /stack with right perms
-
 RUN mkdir -p /stack && chown -R $USER:$USER /stack
 
 USER "$USER"
 
-# TODO building from scratch work without this because chown 1000 takes care of it in COPY?
-# RUN mkdir -p /home/haskell/.stack/global-project/
-
 # Copy stack.yaml with overriden packages and extra-deps
 COPY --chown=$UID:$GID config.yaml /home/$USER/.stack/config.yaml
 COPY --chown=$UID:$GID stack.yaml /home/$USER/.stack/global-project/stack.yaml
-
-RUN ls -larth -R /home/haskell/.stack
 
 COPY install.sh /home/$USER/install.sh
 RUN /home/$USER/install.sh
