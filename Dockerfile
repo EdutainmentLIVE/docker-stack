@@ -47,7 +47,11 @@ RUN apt-get update -y \
     zlib1g-dev \
   && apt-get autoremove
 
-# next build docker-stack develop after below should create /stack with right perms
+# Own stack's working directory and allow any user to write to it. This is a "shared" stack
+# directory that any user is capable to writing/reading/executing to. For the most part users will
+# execute with UID 1000 and will not have to worry about the extended permissions. But if you're
+# using a non-standard UID then you would have to execute this image with a different UID and would
+# still have to have access to this directory.
 RUN mkdir -p /stack && chown -R $USER:$USER /stack
 
 ENV STACK_ROOT="/stack/.stack"
