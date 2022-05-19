@@ -20,9 +20,15 @@ install_stack() {
   ghcup install stack 2.7.3 --set
 }
 
+install_hls() {
+  ghcup compile hls -g master --ghc 8.10.7 --set -- --ghc-options='-dynamic'
+}
+
+
 install_ghcup
 ghcup upgrade
 install_ghc
 install_cabal
 cabal update
 install_stack
+install_hls
