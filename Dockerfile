@@ -15,7 +15,8 @@ ENV PATH=/home/$USER/.ghcup/bin:/stack/bin:/usr/lib/postgresql/13/bin:$PATH
 RUN groupadd -g "$GID" $USER \
   && useradd --create-home --uid "$UID" --gid "$GID" "$USER" \
   && mkdir -p /etc/sudoers.d/ \
-  && echo "$USER ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$USER"
+  && echo "$USER ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$USER" \
+  && chown -R "$USER":"$USER" /home/$USER
 
 # Have a default work directory. Chances are your configs will override this to provide a better
 # experience like terminal click to go to definition.
