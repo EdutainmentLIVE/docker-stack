@@ -26,7 +26,6 @@ install_hls() {
 
 
 install_ghcup
-ghcup upgrade
 install_ghc
 install_cabal
 cabal update
