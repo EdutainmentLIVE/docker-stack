@@ -9,7 +9,7 @@ install_ghcup() {
 }
 
 install_ghc() {
-  ghcup install ghc 8.10.7 --set
+  ghcup install ghc 9.0.2 --set
 }
 
 install_cabal() {
@@ -17,13 +17,12 @@ install_cabal() {
 }
 
 install_stack() {
-  ghcup install stack 2.7.3 --set
+  ghcup install stack 2.7.5 --set
 }
 
 install_hls() {
-  ghcup compile hls -g master --ghc 8.10.7 --set -- --ghc-options='-dynamic'
+  ghcup compile hls -g master --ghc 9.0.2 --set -- --ghc-options='-dynamic'
 }
-
 
 install_ghcup
 install_ghc
