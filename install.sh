@@ -21,7 +21,7 @@ install_stack() {
 }
 
 install_hls() {
-  ghcup compile hls -v 1.7.0.0 --ghc 9.0.2 --set -- --ghc-options='-dynamic'
+  ghcup compile hls -g 9b3f3bf20e3016d20adf1f7259dc9622f8046569 --ghc 9.0.2 --set -- --ghc-options='-dynamic'
 }
 
 install_ghcup
