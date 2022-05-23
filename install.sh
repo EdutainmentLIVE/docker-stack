@@ -31,6 +31,3 @@ cabal update
 stack_update
 install_stack
 install_hls
-
-echo "remove all HLS compilation artifacts"
-rm -r ~/.cabal
