@@ -21,6 +21,7 @@ install_stack() {
 }
 
 install_hls() {
+  mkdir -p ~/.cache
   ghcup compile hls -g 9b3f3bf20e3016d20adf1f7259dc9622f8046569 --ghc 9.0.2 --set -- --ghc-options='-dynamic'
 }
 
