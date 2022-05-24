@@ -63,5 +63,6 @@ COPY --chown=$UID:$GID stack.yaml /stack/.stack/global-project/stack.yaml
 
 USER "$USER"
 
-COPY install.sh /home/$USER/install.sh
+COPY --chown=$UID:$GID install.sh /home/$USER/install.sh
+
 RUN /home/$USER/install.sh
