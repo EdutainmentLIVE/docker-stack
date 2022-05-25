@@ -1,4 +1,4 @@
 # https://docs.haskellstack.org/en/stable/yaml_configuration/
 
-resolver: https://raw.githubusercontent.com/EdutainmentLIVE/snapshot/3c01cf9ec72ef685706093e57a75284d131a668d/snapshot.yaml
+resolver: https://raw.githubusercontent.com/EdutainmentLIVE/snapshot/f43bf8eb96561e66e2f8cc9940be8e44cc15bd1d/snapshot.yaml
 packages: []
