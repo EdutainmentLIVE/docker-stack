@@ -29,6 +29,6 @@ install_ghcup
 install_ghc
 install_cabal
 cabal update
-stack_update
+stack update
 install_stack
 install_hls
